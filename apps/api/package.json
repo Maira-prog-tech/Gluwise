@@ -2,7 +2,7 @@
   "name": "api",
   "version": "1.0.0",
   "description": "GluWise API Server - Node.js + Express + TypeScript",
-  "main": "dist/index.js",
+  "main": "dist/simpleIndex.js",
   "scripts": {
     "build": "tsc",
     "dev": "tsx watch src/simpleIndex.ts",
