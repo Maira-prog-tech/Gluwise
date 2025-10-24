@@ -1,3 +1,2 @@
-// Alias file to redirect to simpleIndex.ts
-export * from './simpleIndex';
+// Main entry point - imports and starts the server from simpleIndex
 import './simpleIndex';
