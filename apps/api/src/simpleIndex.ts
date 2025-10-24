@@ -11,7 +11,7 @@ dotenv.config();
 
 const app: express.Application = express();
 const logger = createLogger();
-const PORT = process.env.PORT || 3001;
+const PORT = Number(process.env.PORT) || 3001;
 
 // Security middleware
 app.use(helmet());
@@ -84,7 +84,7 @@ app.use((error: any, req: express.Request, res: express.Response, next: express.
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   logger.info({ port: PORT }, 'Server started successfully');
   console.log(`🚀 GluWise API Server running on port ${PORT}`);
   console.log(`📱 Health check: http://localhost:${PORT}/api/v1/health`);
