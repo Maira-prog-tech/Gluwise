@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: gluwise-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: API_URL
+        fromService:
+          type: web
+          name: gluwise-api
+          property: host
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: GOOGLE_CLOUD_PROJECT_ID
+        sync: false
+      - key: GOOGLE_CLOUD_KEY_FILE
+        sync: false
+      - key: USDA_API_KEY
+        sync: false

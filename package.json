@@ -1,0 +1,50 @@
+{
+  "name": "gluwise",
+  "version": "1.0.0",
+  "description": "GluWise - Smart Nutrition Scanner App",
+  "main": "index.js",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "build": "npm run build:api && npm run build:web",
+    "test": "npm run test:api",
+    "dev:api": "cd apps/api && npm run dev",
+    "dev:web": "cd apps/web && npm start",
+    "build:api": "cd apps/api && npm run build",
+    "build:web": "cd apps/web && npm run build",
+    "test:api": "cd apps/api && npm test",
+    "start:api": "cd apps/api && npm start",
+    "install:all": "npm install && npm run install:api && npm run install:web",
+    "install:api": "cd apps/api && npm install",
+    "install:web": "cd apps/web && npm install"
+  },
+  "keywords": [
+    "nutrition",
+    "scanner",
+    "health",
+    "food",
+    "barcode",
+    "ai",
+    "react",
+    "web"
+  ],
+  "author": "Maira",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "prettier": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "turbo": "^1.11.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "form-data": "^4.0.4",
+    "node-fetch": "^2.7.0"
+  }
+}

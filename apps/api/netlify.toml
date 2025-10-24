@@ -1,0 +1,9 @@
+# This is a Node.js API backend, not suitable for Netlify
+# Use Railway, Render, or other Node.js hosting platforms instead
+# See railway.json and render.yaml for proper deployment configurations
+
+[build]
+  ignore = "true"
+
+[build.environment]
+  NODE_ENV = "production"

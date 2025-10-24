@@ -1,0 +1,337 @@
+/* Scan Result Component Styles */
+
+.scan-result {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.result-section {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 25px;
+  border: 1px solid #e9ecef;
+  transition: box-shadow 0.3s;
+}
+
+.result-section:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 10px;
+}
+
+.section-icon {
+  font-size: 1.5rem;
+}
+
+.serving-size {
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-weight: normal;
+  margin-left: auto;
+}
+
+/* Product Info */
+.product-info {
+  background: linear-gradient(135deg, #fff5f5, #f0f8ff);
+  border: 1px solid #e3f2fd;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.product-header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.product-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.product-brand {
+  font-size: 1.1rem;
+  color: #4FC3F7;
+  font-weight: 600;
+}
+
+.product-description {
+  color: #6c757d;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.product-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.category, .barcode {
+  background: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #495057;
+  border: 1px solid #dee2e6;
+}
+
+/* Health Score */
+.health-score {
+  background: linear-gradient(135deg, #f0fff4, #f0f8ff);
+  border: 1px solid #c6f6d5;
+}
+
+.score-display {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.score-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 6px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  flex-shrink: 0;
+}
+
+.score-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.score-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.score-insights {
+  flex: 1;
+}
+
+.score-insights p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #495057;
+}
+
+/* Nutrition Facts */
+.nutrition-facts {
+  background: linear-gradient(135deg, #fff8e1, #f3e5f5);
+  border: 1px solid #ffecb3;
+}
+
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.nutrition-item {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e9ecef;
+  transition: transform 0.2s;
+}
+
+.nutrition-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nutrition-item.calories {
+  background: linear-gradient(135deg, #fff3e0, #ffecb3);
+  border-color: #ffcc02;
+}
+
+.nutrition-label {
+  font-weight: 600;
+  color: #495057;
+}
+
+.nutrition-value {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+/* Lists (Recommendations, Benefits, Warnings) */
+.recommendations, .benefits, .warnings {
+  background: white;
+}
+
+.recommendations {
+  border-left: 4px solid #4CAF50;
+}
+
+.benefits {
+  border-left: 4px solid #FF9800;
+}
+
+.warnings {
+  border-left: 4px solid #F44336;
+}
+
+.recommendations-list, .benefits-list, .warnings-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recommendation-item, .benefit-item, .warning-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  line-height: 1.5;
+}
+
+.recommendation-icon, .benefit-icon, .warning-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Scan Metadata */
+.scan-metadata {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  border: 1px solid #dee2e6;
+}
+
+.metadata-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.metadata-item {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid #e9ecef;
+}
+
+.metadata-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.metadata-value {
+  font-weight: 600;
+  color: #495057;
+  font-size: 1rem;
+}
+
+.scan-id {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  background: #f8f9fa;
+  padding: 5px 8px;
+  border-radius: 5px;
+  word-break: break-all;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .result-section {
+    padding: 20px;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+    flex-wrap: wrap;
+  }
+  
+  .score-display {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .score-circle {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .score-value {
+    font-size: 1.5rem;
+  }
+  
+  .nutrition-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .metadata-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-meta {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scan-result {
+    gap: 20px;
+  }
+  
+  .result-section {
+    padding: 15px;
+  }
+  
+  .section-title {
+    font-size: 1.1rem;
+  }
+  
+  .product-name {
+    font-size: 1.3rem;
+  }
+  
+  .nutrition-item {
+    padding: 12px;
+  }
+  
+  .recommendation-item, .benefit-item, .warning-item {
+    padding: 12px;
+  }
+}
