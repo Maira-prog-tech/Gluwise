@@ -35,6 +35,22 @@ app.use(rateLimiter);
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: '🎉 GluWise API is WORKING with Gemini AI!',
+    timestamp: new Date().toISOString(),
+    version: '1.0.0',
+    endpoints: [
+      'GET /api/v1/health',
+      'POST /api/v1/analyze-text',
+      'POST /api/v1/scan-image',
+      'POST /api/v1/scan-barcode'
+    ]
+  });
+});
+
 // API Routes
 app.use('/api/v1/health', healthRouter);
 app.use('/api/v1', simpleScanRoutes);
