@@ -7,7 +7,8 @@ console.log('🚀 GluWise API - Fresh Deploy');
 
 const app = express();
 
-app.use(helmet());
+// Temporarily disable helmet for CORS testing
+// app.use(helmet());
 // CORS configuration
 app.use(cors({
   origin: '*', // Allow all origins for now
