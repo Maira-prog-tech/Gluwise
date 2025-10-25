@@ -8,8 +8,11 @@ console.log('🚀 GluWise API - Fresh Deploy');
 const app = express();
 
 app.use(helmet());
+// CORS configuration
 app.use(cors({
-  origin: '*', // Allow all origins for testing
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://gluwise-web.vercel.app', 'https://gluwise.vercel.app', 'http://localhost:3000', '*'] 
+    : ['http://localhost:3000', 'http://localhost:19006'],
   credentials: true
 }));
 app.use(express.json());
