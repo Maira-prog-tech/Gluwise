@@ -83,12 +83,14 @@ app.use((error: any, req: express.Request, res: express.Response, next: express.
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  logger.info({ port: PORT }, 'Server started successfully');
-  console.log(`🚀 GluWise API Server running on port ${PORT}`);
-  console.log(`📱 Health check: http://localhost:${PORT}/api/v1/health`);
-  console.log(`🔍 API docs: http://localhost:${PORT}/api/v1`);
-});
+// Start server only if not in Vercel environment
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    logger.info({ port: PORT }, 'Server started successfully');
+    console.log(`🚀 GluWise API Server running on port ${PORT}`);
+    console.log(`📱 Health check: http://localhost:${PORT}/api/v1/health`);
+    console.log(`🔍 API docs: http://localhost:${PORT}/api/v1`);
+  });
+}
 
 export default app;
