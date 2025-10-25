@@ -55,15 +55,16 @@ export interface ScanResult {
 export interface HealthStatus {
   status: string;
   timestamp: string;
-  uptime: number;
   version: string;
+  environment: string;
   services: {
     database: string;
-    openai: string;
+    gemini: string;
     vision: string;
     usda: string;
   };
-  memory: {
+  uptime?: number;
+  memory?: {
     used: number;
     total: number;
     percentage: number;

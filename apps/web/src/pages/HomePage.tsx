@@ -26,7 +26,8 @@ const HomePage: React.FC = () => {
     }
   };
 
-  const formatUptime = (seconds: number): string => {
+  const formatUptime = (seconds?: number): string => {
+    if (!seconds) return 'N/A';
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     return `${hours}ч ${minutes}м`;
@@ -221,7 +222,9 @@ const HomePage: React.FC = () => {
                 <span>API работает</span>
                 <div className="status-details">
                   <span>Время работы: {formatUptime(healthStatus.uptime)}</span>
-                  <span>Память: {healthStatus.memory.percentage}%</span>
+                  {healthStatus.memory && (
+                    <span>Память: {healthStatus.memory.percentage}%</span>
+                  )}
                 </div>
               </div>
             ) : null}
