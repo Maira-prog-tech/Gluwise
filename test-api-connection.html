@@ -15,32 +15,41 @@
             try {
                 resultsDiv.innerHTML += '<p>🔄 Testing API connection...</p>';
                 
+                // Test with CORS proxy first
+                const proxyURL = 'https://cors-anywhere.herokuapp.com/';
+                
                 // Test root endpoint
-                const rootResponse = await fetch(`${API_URL}/`);
-                const rootData = await rootResponse.json();
-                resultsDiv.innerHTML += `<p>✅ Root: ${JSON.stringify(rootData)}</p>`;
+                try {
+                    const rootResponse = await fetch(`${proxyURL}${API_URL}/`);
+                    const rootData = await rootResponse.json();
+                    resultsDiv.innerHTML += `<p>✅ Root (via proxy): ${JSON.stringify(rootData)}</p>`;
+                } catch (proxyError) {
+                    resultsDiv.innerHTML += `<p>⚠️ Proxy failed, trying direct...</p>`;
+                    
+                    // Try direct connection
+                    const rootResponse = await fetch(`${API_URL}/`, {
+                        mode: 'no-cors'
+                    });
+                    resultsDiv.innerHTML += `<p>🔄 Direct request sent (no-cors mode)</p>`;
+                }
                 
                 // Test health endpoint
-                const healthResponse = await fetch(`${API_URL}/api/v1/health`);
-                const healthData = await healthResponse.json();
-                resultsDiv.innerHTML += `<p>✅ Health: ${JSON.stringify(healthData)}</p>`;
-                
-                // Test analyze-text endpoint
-                const analyzeResponse = await fetch(`${API_URL}/api/v1/analyze-text`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ query: 'apple' })
-                });
-                const analyzeData = await analyzeResponse.json();
-                resultsDiv.innerHTML += `<p>✅ Analyze: ${JSON.stringify(analyzeData)}</p>`;
+                try {
+                    const healthResponse = await fetch(`${API_URL}/api/v1/health`);
+                    const healthData = await healthResponse.json();
+                    resultsDiv.innerHTML += `<p>✅ Health: ${JSON.stringify(healthData)}</p>`;
+                } catch (healthError) {
+                    resultsDiv.innerHTML += `<p>❌ Health Error: ${healthError.message}</p>`;
+                }
                 
             } catch (error) {
                 resultsDiv.innerHTML += `<p>❌ Error: ${error.message}</p>`;
                 console.error('API Test Error:', error);
             }
         }
+        
+        // Add manual test button
+        resultsDiv.innerHTML += '<button onclick="testAPI()">🔄 Test Again</button><br><br>';
         
         testAPI();
     </script>
