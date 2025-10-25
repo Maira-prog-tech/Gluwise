@@ -22,5 +22,10 @@
   ],
   "env": {
     "REACT_APP_API_URL": "https://gluwise-api.vercel.app/api/v1"
+  },
+  "build": {
+    "env": {
+      "REACT_APP_API_URL": "https://gluwise-api.vercel.app/api/v1"
+    }
   }
 }
