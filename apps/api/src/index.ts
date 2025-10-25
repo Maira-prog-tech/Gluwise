@@ -7,16 +7,14 @@ import { createLogger } from './utils/logger';
 import { errorHandler } from './middleware/errorHandler';
 import { rateLimiter } from './middleware/rateLimiter';
 import { healthRouter } from './routes/health';
-import { scanRouter } from './routes/scan';
-import { profileRouter } from './routes/profile';
-import { historyRouter } from './routes/history';
+import simpleScanRoutes from './routes/simpleScan';
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
 const logger = createLogger();
-const port = process.env.PORT || 3001;
+const port = Number(process.env.PORT) || 3001;
 
 // Security middleware
 app.use(helmet());
@@ -38,10 +36,8 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // API Routes
-app.use('/v1/health', healthRouter);
-app.use('/v1/scan', scanRouter);
-app.use('/v1/profile', profileRouter);
-app.use('/v1/history', historyRouter);
+app.use('/api/v1/health', healthRouter);
+app.use('/api/v1', simpleScanRoutes);
 
 // 404 handler
 app.use('*', (req, res) => {
@@ -56,10 +52,10 @@ app.use('*', (req, res) => {
 app.use(errorHandler);
 
 // Start server
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   logger.info(`🚀 GluWise API server running on port ${port}`);
   logger.info(`📱 Environment: ${process.env.NODE_ENV || 'development'}`);
-  logger.info(`🔗 Health check: http://localhost:${port}/v1/health`);
+  logger.info(`🔗 Health check: http://localhost:${port}/api/v1/health`);
 });
 
 export default app;
