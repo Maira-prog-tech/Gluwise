@@ -3,14 +3,14 @@
   "name": "gluwise-api",
   "builds": [
     {
-      "src": "server.js",
+      "src": "index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/server.js"
+      "dest": "/index.js"
     }
   ],
   "env": {
@@ -18,7 +18,7 @@
     "VERCEL": "1"
   },
   "functions": {
-    "server.js": {
+    "index.js": {
       "maxDuration": 30
     }
   }
