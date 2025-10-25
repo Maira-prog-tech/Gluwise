@@ -1,8 +1,8 @@
 import request from 'supertest';
-import express from 'express';
+import express, { Application } from 'express';
 import simpleScanRoutes from '../routes/simpleScan';
 
-const app = express();
+const app: Application = express();
 app.use(express.json());
 app.use('/api/v1', simpleScanRoutes);
 
