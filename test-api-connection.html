@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API Connection</title>
+</head>
+<body>
+    <h1>🔍 Test GluWise API</h1>
+    <div id="results"></div>
+    
+    <script>
+        const API_URL = 'https://gluwise-api.vercel.app';
+        const resultsDiv = document.getElementById('results');
+        
+        async function testAPI() {
+            try {
+                resultsDiv.innerHTML += '<p>🔄 Testing API connection...</p>';
+                
+                // Test root endpoint
+                const rootResponse = await fetch(`${API_URL}/`);
+                const rootData = await rootResponse.json();
+                resultsDiv.innerHTML += `<p>✅ Root: ${JSON.stringify(rootData)}</p>`;
+                
+                // Test health endpoint
+                const healthResponse = await fetch(`${API_URL}/api/v1/health`);
+                const healthData = await healthResponse.json();
+                resultsDiv.innerHTML += `<p>✅ Health: ${JSON.stringify(healthData)}</p>`;
+                
+                // Test analyze-text endpoint
+                const analyzeResponse = await fetch(`${API_URL}/api/v1/analyze-text`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ query: 'apple' })
+                });
+                const analyzeData = await analyzeResponse.json();
+                resultsDiv.innerHTML += `<p>✅ Analyze: ${JSON.stringify(analyzeData)}</p>`;
+                
+            } catch (error) {
+                resultsDiv.innerHTML += `<p>❌ Error: ${error.message}</p>`;
+                console.error('API Test Error:', error);
+            }
+        }
+        
+        testAPI();
+    </script>
+</body>
+</html>

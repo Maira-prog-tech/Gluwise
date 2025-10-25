@@ -10,10 +10,10 @@ const app = express();
 app.use(helmet());
 // CORS configuration
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://gluwise-web.vercel.app', 'https://gluwise-pi9l5ehqz-maira-prog-techs-projects.vercel.app', 'http://localhost:3000', '*'] 
-    : ['http://localhost:3000', 'http://localhost:19006'],
-  credentials: true
+  origin: '*', // Allow all origins for now
+  credentials: false,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 
