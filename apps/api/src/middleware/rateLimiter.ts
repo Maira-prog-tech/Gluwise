@@ -18,14 +18,14 @@ export const rateLimiter = rateLimit({
 
 // Scan-specific rate limiter (more restrictive)
 const scanLimiter = new RateLimiterMemory({
-  keyGenerator: (req: Request) => req.ip,
   points: parseInt(process.env.RATE_LIMIT_SCAN_MAX || '10'), // Number of requests
   duration: 900, // Per 15 minutes
 });
 
 export const scanRateLimiter = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await scanLimiter.consume(req.ip);
+    const clientIP = req.ip || req.connection.remoteAddress || 'unknown';
+    await scanLimiter.consume(clientIP);
     next();
   } catch (rejRes: any) {
     const secs = Math.round(rejRes.msBeforeNext / 1000) || 1;
